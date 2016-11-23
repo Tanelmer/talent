@@ -7,7 +7,8 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>学习计划</title>
+		<title>Plan level 1</title>
+		<link ref="stylesheet" href="css/reset.css" type="text/css"/>
 	</head>
 	<body>
 		<h1>level 1</h1>
@@ -18,5 +19,92 @@
 				<li>Bom规范</li>
 			</ul>
 		</p>
+		<script>
+			//去重
+			let unique = function(arr) {  
+		  	let hashTable = {};
+		  	let data = [];
+		  	for(let i=0,l=arr.length;i<l;i++) {
+			    if(!hashTable[arr[i]]) {
+				      	hashTable[arr[i]] = true;
+				      	data.push(arr[i]);
+			    	}
+			  	}
+		  	return data
+			}
+			var arr = [1,222,22,11,23,334,44,222,1,32,23];
+			console.log(unique(arr));
+			
+			//统计重复次数最多
+			function findMaxDuplicateChar(str) {  
+			  if(str.length == 1) {
+			    return str;
+			  }
+			  let charObj = {};
+			  for(let i=0;i<str.length;i++) {
+			    if(!charObj[str.charAt(i)]) {
+			      charObj[str.charAt(i)] = 1;
+			    }else{
+			      charObj[str.charAt(i)] += 1;
+			    }
+			  }
+			  let maxChar = '',
+			      maxValue = 1;
+			  for(var k in charObj) {
+			    if(charObj[k] >= maxValue) {
+			      maxChar = k;
+			      maxValue = charObj[k];
+			    }
+			  }
+			  return maxChar;
+			}
+			console.log(findMaxDuplicateChar('addasdsdsfffasdasfffasdasaaaaadsdssdggfg'));
+			
+			//冒泡排序
+			function bubbleSort(arr) {  
+			    for(let i = 0,l=arr.length;i<l-1;i++) {
+			        for(let j = i+1;j<l;j++) { 
+			          if(arr[i]>arr[j]) {
+			                let tem = arr[i];
+			                arr[i] = arr[j];
+			                arr[j] = tem;
+			            }
+			        }
+			    }
+			    return arr;
+			}
+			console.log(bubbleSort([222,21,2212,344,3,567,3,88,92]));
+			
+			//快速排序
+			function quickSort(arr) {
+
+			    if(arr.length<=1) {
+			        return arr;
+			    }
+			
+			    let leftArr = [];
+			    let rightArr = [];
+			    let q = arr[0];
+			    for(let i = 1,l=arr.length; i<l; i++) {
+			        if(arr[i]>q) {
+			            rightArr.push(arr[i]);
+			        }else{
+			            leftArr.push(arr[i]);
+			        }
+			    }
+			
+			    return [].concat(quickSort(leftArr),[q],quickSort(rightArr));
+			}
+			console.log(quickSort([2221,21,1,44,3,5,3,88,92]));
+			
+			//两个整数交换(不利用中间量)
+			function swap(a,b){
+				b = b - a;
+				a = a + b;
+				b = a - b;
+				return [a,b];
+			}
+			
+		</script>
 	</body>
 </html>
